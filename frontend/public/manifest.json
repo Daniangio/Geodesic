@@ -1,0 +1,10 @@
+{
+  "short_name": "Lobby",
+  "name": "Player Lobby",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0f2321",
+  "background_color": "#0a1514"
+}

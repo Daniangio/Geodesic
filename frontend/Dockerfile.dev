@@ -1,0 +1,21 @@
+# This Dockerfile is for DEVELOPMENT only
+# It runs the 'npm start' dev server
+
+FROM node:18-alpine
+WORKDIR /app
+
+# Copy package files and install dependencies
+# We install dependencies here so we don't
+# re-install them every time we start the container
+COPY package.json package-lock.json ./
+RUN npm ci --no-audit --no-fund
+
+# Copy Tailwind configs
+COPY tailwind.config.js ./
+COPY postcss.config.js ./
+
+# Mounts (from docker-compose.override.yml)
+# will provide the /src and /public
+# so we just start the server.
+EXPOSE 3000
+CMD ["npm", "start"]
